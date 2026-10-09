@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary-fixed":"#131b2e","on-background":"#0b1c30","primary-fixed":"#dae2fd","primary-fixed-dim":"#bec6e0","tertiary":"#000000","on-secondary-container":"#fffbff","on-secondary-fixed-variant":"#2f2ebe","inverse-on-surface":"#eaf1ff","secondary-fixed":"#e1e0ff","on-surface":"#0b1c30","primary-container":"#131b2e","on-tertiary-container":"#009668","error-container":"#ffdad6","outline-variant":"#c6c6cd","surface-container-highest":"#d3e4fe","tertiary-container":"#002113","on-primary-fixed-variant":"#3f465c","surface-variant":"#d3e4fe","error":"#ba1a1a","surface-container":"#e5eeff","on-tertiary-fixed-variant":"#005236","surface-container-high":"#dce9ff","secondary-fixed-dim":"#c0c1ff","on-error":"#ffffff","surface":"#f8f9ff","on-tertiary":"#ffffff","surface-container-lowest":"#ffffff","tertiary-fixed-dim":"#4edea3","on-surface-variant":"#45464d","surface-bright":"#f8f9ff","on-tertiary-fixed":"#002113","primary":"#000000","secondary-container":"#6063ee","inverse-primary":"#bec6e0","on-secondary-fixed":"#07006c","surface-tint":"#565e74","on-secondary":"#ffffff","on-primary-container":"#7c839b","inverse-surface":"#213145","secondary":"#4648d4","surface-container-low":"#eff4ff","surface-dim":"#cbdbf5","background":"#f8f9ff","tertiary-fixed":"#6ffbbe","on-error-container":"#93000a","outline":"#76777d","on-primary":"#ffffff"},borderRadius:{DEFAULT:"0.125rem",lg:"0.25rem",xl:"0.5rem",full:"0.75rem"},spacing:{"space-sm":"0.5rem",margin:"1rem","gutter-lg":"1.5rem","margin-lg":"2rem","space-xl":"2rem","space-xs":"0.25rem","space-md":"1rem","margin-md":"1.5rem","space-lg":"1.5rem",gutter:"1rem"},fontFamily:{"headline-md":["Hanken Grotesk"],"headline-xl-mobile":["Hanken Grotesk"],"headline-xl":["Hanken Grotesk"],"label-sm":["JetBrains Mono"],"body-md":["Geist"],"label-md":["JetBrains Mono"],"label-lg":["JetBrains Mono"],"headline-lg":["Hanken Grotesk"],"body-lg":["Geist"],"body-sm":["Geist"]},fontSize:{"headline-md":["18px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-xl-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-xl":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"label-sm":["10px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"500"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-md":["11px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"label-lg":["13px",{lineHeight:"18px",letterSpacing:"0.01em",fontWeight:"500"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between"><div class="flex flex-col"><div class="h-16 px-gutter-lg flex items-center gap-space-sm bg-surface-container-low"><div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[16px]">hub</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md text-on-surface leading-tight">ML Studio</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">ANOVA Selection</span></div></div><div class="px-gutter-lg py-space-sm"><div class="bg-surface-container-lowest p-space-sm rounded-lg shadow-[0_1px_8px_rgba(0,0,0,0.02)]"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Target</span><span class="font-label-sm text-label-sm text-secondary font-semibold">y (Deposit)</span></div><div class="mt-space-xs flex items-center justify-between"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Strategy</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">SelectKBest (k=15)</span></div></div></div><nav class="px-gutter-lg space-y-space-xs mt-space-sm" data-active-classes="bg-primary-container text-on-primary font-semibold rounded-lg"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-colors bg-primary-container text-on-primary font-semibold rounded-lg" data-path="data-pipeline" href="#"><span class="material-symbols-outlined text-[18px]">schema</span><span class="font-body-md text-body-md">Data Pipeline</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="feature-ranking" href="#"><span class="material-symbols-outlined text-[18px]">leaderboard</span><span class="font-body-md text-body-md">Feature Ranking</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="model-impact" href="#"><span class="material-symbols-outlined text-[18px]">insights</span><span class="font-body-md text-body-md">Model Impact</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg transition-colors" data-path="dataset-export" href="#"><span class="material-symbols-outlined text-[18px]">cloud_download</span><span class="font-body-md text-body-md">Dataset Export</span></a></nav></div><div class="p-gutter-lg"><div class="p-space-sm rounded-lg bg-surface-container text-on-surface"><div class="flex items-center gap-space-xs mb-space-xs"><span class="material-symbols-outlined text-[16px] text-secondary">analytics</span><span class="font-label-md text-label-md font-semibold text-on-surface">F-Score Threshold</span></div><div class="flex justify-between items-center"><span class="font-label-sm text-label-sm text-on-surface-variant">P-value &lt; 0.01</span><span class="font-label-sm text-label-sm text-on-surface font-semibold">15 Kept</span></div></div></div></aside><div class="pl-64 min-h-screen flex flex-col bg-surface"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40"><div class="h-16 w-full px-gutter-lg flex items-center justify-between"><div class="flex items-center gap-space-md"><span class="font-headline-md text-headline-md text-on-surface tracking-tight">BankAnalytics ML Studio</span><div class="hidden lg:flex items-center gap-space-xs text-on-surface-variant"><span class="font-body-sm text-body-sm">Pipeline</span><span class="material-symbols-outlined text-[14px]">chevron_right</span><span class="font-body-sm text-body-sm text-on-surface font-medium">Feature Selection (ANOVA)</span></div><div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-full bg-surface-container-high"><span class="material-symbols-outlined text-[14px] text-on-tertiary-container">check_circle</span><span class="font-label-sm text-label-sm text-on-surface uppercase">Model Ready</span></div><div class="hidden sm:flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low"><span class="material-symbols-outlined text-[14px] text-on-surface-variant">table_chart</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium">bank-additional-full.csv</span></div></div><div class="flex items-center gap-space-md"><a class="hidden md:flex items-center gap-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#"><span class="material-symbols-outlined text-[16px]">menu_book</span>Documentation</a><div class="flex items-center gap-space-xs"><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">file_download</span>Export (k=15)</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></div></header><main class="w-full pt-16 bg-surface px-gutter-lg py-gutter-lg flex-1"><div class="flex flex-col w-full gap-space-lg">
+<!-- Top Analytical Banner & Meta Status -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-high text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[15px] text-secondary">database</span>
+          bank-additional-full.csv (Delimitador ;)
+        </span>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md">
+<span class="material-symbols-outlined text-[15px]">flag</span>
+          Target: y (Depósito: yes / no)
+        </span>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">verified</span>
+          Pipeline: Validado
+        </span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">alt_route</span>
+          Separador ';' detectado
+        </span>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">transform</span>
+          One-Hot Encoding aplicado
+        </span>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-secondary">tune</span>
+          Imputación nulos (Media)
+        </span>
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-primary text-on-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px] text-tertiary-fixed">insights</span>
+          ANOVA SelectKBest (k=15)
+        </span>
+</div>
+</div>
+<!-- 4 High-Density Key Metrics -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md pt-space-xs">
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Filas Totales</span>
+<span class="material-symbols-outlined text-[18px]">table_rows</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">41,188</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-space-xs">100% registros limpios parseados</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Columnas Iniciales</span>
+<span class="material-symbols-outlined text-[18px]">view_column</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">21 cols</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-space-xs">10 numéricas • 10 categóricas • 1 target</div>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col justify-between shadow-[0_1px_3px_rgba(15,23,42,0.04)]">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Cols tras One-Hot</span>
+<span class="material-symbols-outlined text-[18px]">account_tree</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-surface">53 variables</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-space-xs">+32 dummies binarias generadas</div>
+</div>
+<div class="bg-primary text-on-primary p-space-md rounded-lg flex flex-col justify-between shadow-md relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[96px]">compress</span>
+</div>
+<div class="flex items-center justify-between text-primary-fixed mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider">Dimensiones Finales</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-semibold">-71.7% DIM</span>
+</div>
+<div class="font-headline-lg text-headline-lg text-on-primary">15 Feats + 1 Target</div>
+<div class="font-label-sm text-label-sm text-primary-fixed-dim mt-space-xs">P-Value &lt; 0.001 en todas las selecciones</div>
+</div>
+</div>
+</section>
+<!-- Interactive Action & Hyperparameter Bar -->
+<section class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex flex-wrap items-center gap-space-md">
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-lg">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase whitespace-nowrap" for="k-range">Selector K Features:</label>
+<div class="flex items-center gap-space-xs">
+<input class="w-28 sm:w-36 accent-secondary cursor-pointer" id="k-range" max="30" min="5" oninput="updateKValue(this.value)" type="range" value="15"/>
+<span class="font-label-lg text-label-lg px-space-sm py-0.5 rounded bg-secondary text-on-secondary font-semibold" id="k-value-badge">k=15 óptimo</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-lg bg-surface-container text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-secondary">functions</span>
+        Scoring: <span class="font-semibold text-secondary">f_classif (ANOVA F-value)</span>
+</div>
+<span class="hidden xl:inline-flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+        Matriz sparsificada en memoria
+      </span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-space-xs transition-colors" id="copy-code-btn" onclick="copyPipelineScript()" type="button">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span id="copy-btn-text">Copiar script Python</span>
+</button>
+<button class="px-space-md py-space-xs rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md flex items-center gap-space-xs shadow-sm transition-all active:scale-[0.99] group" onclick="downloadDatasetModal()" title="bank_additional_reduced_k15.csv" type="button">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed group-hover:translate-y-0.5 transition-transform">download</span>
+<span class="font-semibold">Descargar Dataset Reducido (CSV)</span>
+<span class="font-label-sm text-label-sm opacity-70 ml-space-xs">k15.csv</span>
+</button>
+</div>
+</section>
+<!-- Section 1: Original Dataset Preview -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-surface-container text-secondary font-semibold">ETAPA 01</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">1. Dataset Original (Vista previa cruda)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dimensiones: 41,188 filas × 21 columnas | Delimitador <code class="font-label-sm text-secondary bg-surface-container px-1 py-0.5 rounded">;</code></p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative w-full sm:w-64">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-[16px] text-on-surface-variant">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 rounded-lg bg-surface-container text-on-surface placeholder:text-on-surface-variant text-body-sm font-body-sm focus:outline-none focus:bg-surface-container-high transition-colors" id="raw-search-input" onkeyup="filterRawTable()" placeholder="Filtrar por empleo, educación..." type="text"/>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant whitespace-nowrap bg-surface-container-low px-space-sm py-1.5 rounded-lg">Muestra: 6 / 41,188</span>
+</div>
+</div>
+<!-- Data Table Container with Horizontal Scroll -->
+<div class="overflow-x-auto rounded-lg bg-surface">
+<table class="w-full text-left font-body-sm text-body-sm whitespace-nowrap" id="raw-table">
+<thead class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase">
+<tr>
+<th class="py-2.5 px-3">#</th>
+<th class="py-2.5 px-3">age</th>
+<th class="py-2.5 px-3">job</th>
+<th class="py-2.5 px-3">marital</th>
+<th class="py-2.5 px-3">education</th>
+<th class="py-2.5 px-3">default</th>
+<th class="py-2.5 px-3">housing</th>
+<th class="py-2.5 px-3">loan</th>
+<th class="py-2.5 px-3">contact</th>
+<th class="py-2.5 px-3">month</th>
+<th class="py-2.5 px-3">day_of_week</th>
+<th class="py-2.5 px-3 text-right">duration</th>
+<th class="py-2.5 px-3 text-right">campaign</th>
+<th class="py-2.5 px-3 text-right">pdays</th>
+<th class="py-2.5 px-3 text-right">previous</th>
+<th class="py-2.5 px-3">poutcome</th>
+<th class="py-2.5 px-3 text-right">emp.var.rate</th>
+<th class="py-2.5 px-3 text-right">cons.price.idx</th>
+<th class="py-2.5 px-3 text-right">cons.conf.idx</th>
+<th class="py-2.5 px-3 text-right">euribor3m</th>
+<th class="py-2.5 px-3 text-right">nr.employed</th>
+<th class="py-2.5 px-3 text-center bg-surface-container-high font-semibold text-secondary">y</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-on-surface">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant">0001</td>
+<td class="py-2 px-3 font-label-md">56</td>
+<td class="py-2 px-3">housemaid</td>
+<td class="py-2 px-3">married</td>
+<td class="py-2 px-3">basic.4y</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm">no</span></td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">telephone</td>
+<td class="py-2 px-3">may</td>
+<td class="py-2 px-3">mon</td>
+<td class="py-2 px-3 text-right font-label-md">261</td>
+<td class="py-2 px-3 text-right font-label-md">1</td>
+<td class="py-2 px-3 text-right font-label-md text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right font-label-md">0</td>
+<td class="py-2 px-3 text-on-surface-variant">nonexistent</td>
+<td class="py-2 px-3 text-right font-label-md">1.1</td>
+<td class="py-2 px-3 text-right font-label-md">93.994</td>
+<td class="py-2 px-3 text-right font-label-md">-36.4</td>
+<td class="py-2 px-3 text-right font-label-md">4.857</td>
+<td class="py-2 px-3 text-right font-label-md">5191.0</td>
+<td class="py-2 px-3 text-center bg-surface-container-low font-label-md font-semibold text-error">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant">0002</td>
+<td class="py-2 px-3 font-label-md">57</td>
+<td class="py-2 px-3">services</td>
+<td class="py-2 px-3">married</td>
+<td class="py-2 px-3">high.school</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm">unknown</span></td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">telephone</td>
+<td class="py-2 px-3">may</td>
+<td class="py-2 px-3">mon</td>
+<td class="py-2 px-3 text-right font-label-md">149</td>
+<td class="py-2 px-3 text-right font-label-md">1</td>
+<td class="py-2 px-3 text-right font-label-md text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right font-label-md">0</td>
+<td class="py-2 px-3 text-on-surface-variant">nonexistent</td>
+<td class="py-2 px-3 text-right font-label-md">1.1</td>
+<td class="py-2 px-3 text-right font-label-md">93.994</td>
+<td class="py-2 px-3 text-right font-label-md">-36.4</td>
+<td class="py-2 px-3 text-right font-label-md">4.857</td>
+<td class="py-2 px-3 text-right font-label-md">5191.0</td>
+<td class="py-2 px-3 text-center bg-surface-container-low font-label-md font-semibold text-error">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant">0003</td>
+<td class="py-2 px-3 font-label-md">37</td>
+<td class="py-2 px-3">services</td>
+<td class="py-2 px-3">married</td>
+<td class="py-2 px-3">high.school</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm">no</span></td>
+<td class="py-2 px-3">yes</td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">telephone</td>
+<td class="py-2 px-3">may</td>
+<td class="py-2 px-3">mon</td>
+<td class="py-2 px-3 text-right font-label-md">226</td>
+<td class="py-2 px-3 text-right font-label-md">1</td>
+<td class="py-2 px-3 text-right font-label-md text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right font-label-md">0</td>
+<td class="py-2 px-3 text-on-surface-variant">nonexistent</td>
+<td class="py-2 px-3 text-right font-label-md">1.1</td>
+<td class="py-2 px-3 text-right font-label-md">93.994</td>
+<td class="py-2 px-3 text-right font-label-md">-36.4</td>
+<td class="py-2 px-3 text-right font-label-md">4.857</td>
+<td class="py-2 px-3 text-right font-label-md">5191.0</td>
+<td class="py-2 px-3 text-center bg-surface-container-low font-label-md font-semibold text-error">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant">0004</td>
+<td class="py-2 px-3 font-label-md">40</td>
+<td class="py-2 px-3">admin.</td>
+<td class="py-2 px-3">married</td>
+<td class="py-2 px-3">basic.6y</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm">no</span></td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">telephone</td>
+<td class="py-2 px-3">may</td>
+<td class="py-2 px-3">mon</td>
+<td class="py-2 px-3 text-right font-label-md">151</td>
+<td class="py-2 px-3 text-right font-label-md">1</td>
+<td class="py-2 px-3 text-right font-label-md text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right font-label-md">0</td>
+<td class="py-2 px-3 text-on-surface-variant">nonexistent</td>
+<td class="py-2 px-3 text-right font-label-md">1.1</td>
+<td class="py-2 px-3 text-right font-label-md">93.994</td>
+<td class="py-2 px-3 text-right font-label-md">-36.4</td>
+<td class="py-2 px-3 text-right font-label-md">4.857</td>
+<td class="py-2 px-3 text-right font-label-md">5191.0</td>
+<td class="py-2 px-3 text-center bg-surface-container-low font-label-md font-semibold text-error">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant">0084</td>
+<td class="py-2 px-3 font-label-md">45</td>
+<td class="py-2 px-3">technician</td>
+<td class="py-2 px-3">married</td>
+<td class="py-2 px-3">professional.course</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm">no</span></td>
+<td class="py-2 px-3">yes</td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">cellular</td>
+<td class="py-2 px-3">jul</td>
+<td class="py-2 px-3">thu</td>
+<td class="py-2 px-3 text-right font-label-md font-semibold text-secondary">1042</td>
+<td class="py-2 px-3 text-right font-label-md">2</td>
+<td class="py-2 px-3 text-right font-label-md text-on-tertiary-container font-semibold">6</td>
+<td class="py-2 px-3 text-right font-label-md">1</td>
+<td class="py-2 px-3 text-on-tertiary-container font-medium">success</td>
+<td class="py-2 px-3 text-right font-label-md">-1.8</td>
+<td class="py-2 px-3 text-right font-label-md">92.893</td>
+<td class="py-2 px-3 text-right font-label-md">-46.2</td>
+<td class="py-2 px-3 text-right font-label-md">1.327</td>
+<td class="py-2 px-3 text-right font-label-md">5099.1</td>
+<td class="py-2 px-3 text-center bg-tertiary-fixed font-label-md font-semibold text-on-tertiary-fixed">yes</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant">0129</td>
+<td class="py-2 px-3 font-label-md">31</td>
+<td class="py-2 px-3">admin.</td>
+<td class="py-2 px-3">single</td>
+<td class="py-2 px-3">university.degree</td>
+<td class="py-2 px-3"><span class="px-1.5 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-sm">no</span></td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">no</td>
+<td class="py-2 px-3">cellular</td>
+<td class="py-2 px-3">oct</td>
+<td class="py-2 px-3">wed</td>
+<td class="py-2 px-3 text-right font-label-md font-semibold text-secondary">589</td>
+<td class="py-2 px-3 text-right font-label-md">1</td>
+<td class="py-2 px-3 text-right font-label-md text-on-tertiary-container font-semibold">3</td>
+<td class="py-2 px-3 text-right font-label-md">2</td>
+<td class="py-2 px-3 text-on-tertiary-container font-medium">success</td>
+<td class="py-2 px-3 text-right font-label-md">-3.4</td>
+<td class="py-2 px-3 text-right font-label-md">92.431</td>
+<td class="py-2 px-3 text-right font-label-md">-26.9</td>
+<td class="py-2 px-3 text-right font-label-md">0.728</td>
+<td class="py-2 px-3 text-right font-label-md">5017.5</td>
+<td class="py-2 px-3 text-center bg-tertiary-fixed font-label-md font-semibold text-on-tertiary-fixed">yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 2: ANOVA Ranking Analysis (Visual Chart & Metric Details) -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-semibold">ETAPA 02</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Ranking ANOVA: Top 15 Características Seleccionadas (F-Score)</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Test de hipótesis F de un factor contra target 'y'. Valores más altos indican máxima correlación discriminatoria.</p>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-secondary">show_chart</span>
+          Max F: 4,308.2 (euribor3m)
+        </span>
+</div>
+</div>
+<!-- Interactive Ranking Breakdown Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Visual Bar Distribution List (7 cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-lg">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-space-xs pb-space-xs uppercase">
+<span>Variable analizada</span>
+<div class="flex items-center gap-space-lg">
+<span>F-Statistic</span>
+<span class="w-16 text-right">Significancia</span>
+</div>
+</div>
+<!-- 15 Features Bars -->
+<div class="space-y-2">
+<!-- 1: euribor3m -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">01</span>
+                euribor3m
+                <span class="font-label-sm text-on-surface-variant font-normal">Macro</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-secondary">4,308.2</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+<!-- 2: nr.employed -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">02</span>
+                nr.employed
+                <span class="font-label-sm text-on-surface-variant font-normal">Macro</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-secondary">4,024.5</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 93.4%;"></div>
+</div>
+</div>
+<!-- 3: duration -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">03</span>
+                duration
+                <span class="font-label-sm text-on-surface-variant font-normal">Contacto</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-secondary">3,921.8</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 91.0%;"></div>
+</div>
+</div>
+<!-- 4: pdays -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">04</span>
+                pdays
+                <span class="font-label-sm text-on-surface-variant font-normal">Campaña anterior</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">2,190.4</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 50.8%;"></div>
+</div>
+</div>
+<!-- 5: emp.var.rate -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">05</span>
+                emp.var.rate
+                <span class="font-label-sm text-on-surface-variant font-normal">Macro</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">1,842.1</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 42.7%;"></div>
+</div>
+</div>
+<!-- 6: poutcome_success -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">06</span>
+                poutcome_success
+                <span class="font-label-sm text-secondary font-medium">Dummy One-Hot</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">1,420.3</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full rounded-full" style="width: 33.0%;"></div>
+</div>
+</div>
+<!-- 7: previous -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">07</span>
+                previous
+              </span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">982.6</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 22.8%;"></div>
+</div>
+</div>
+<!-- 8: cons.price.idx -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">08</span>
+                cons.price.idx
+              </span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">812.4</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 18.8%;"></div>
+</div>
+</div>
+<!-- 9: contact_telephone -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">09</span>
+                contact_telephone
+                <span class="font-label-sm text-secondary font-medium">Dummy One-Hot</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">654.1</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 15.2%;"></div>
+</div>
+</div>
+<!-- 10: month_may -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">10</span>
+                month_may
+                <span class="font-label-sm text-secondary font-medium">Dummy One-Hot</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">489.2</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 11.3%;"></div>
+</div>
+</div>
+<!-- 11 to 15 collapsed/accessible -->
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">11</span>
+                month_mar
+                <span class="font-label-sm text-secondary font-medium">Dummy One-Hot</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">412.0</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 9.5%;"></div>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">12</span>
+                month_oct
+                <span class="font-label-sm text-secondary font-medium">Dummy One-Hot</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">388.7</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 9.0%;"></div>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">13</span>
+                cons.conf.idx
+              </span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">320.5</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 7.4%;"></div>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">14</span>
+                age
+              </span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">215.3</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 5.0%;"></div>
+</div>
+</div>
+<div class="p-space-xs rounded bg-surface hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface flex items-center gap-1.5">
+<span class="w-4 text-on-surface-variant font-label-sm">15</span>
+                default_unknown
+                <span class="font-label-sm text-secondary font-medium">Dummy One-Hot</span>
+</span>
+<div class="flex items-center gap-space-lg">
+<span class="font-label-md text-label-md font-semibold text-on-surface">189.4</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold w-16 text-right">p &lt; 0.001</span>
+</div>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-surface-tint h-full rounded-full" style="width: 4.4%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Analytical Insight & Dimension Filter Diagnostic (5 cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<!-- Summary Insights Box -->
+<div class="bg-surface-container-high p-space-md rounded-lg flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface font-headline-md text-headline-md">
+<span class="material-symbols-outlined text-secondary">psychology</span>
+            Interpretación Matemática
+          </div>
+<p class="font-body-md text-body-md text-on-surface">
+            Las variables macroeconómicas (<code class="font-label-sm font-semibold text-secondary">euribor3m</code>, <code class="font-label-sm font-semibold text-secondary">nr.employed</code>) dominan la varianza explicada. Los clientes contratan depósitos a plazo según el tipo de interés del BCE más que por características socio-demográficas.
+          </p>
+<div class="p-space-sm rounded bg-surface-container text-on-surface flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-[18px] text-secondary mt-0.5">tips_and_updates</span>
+<div class="font-body-sm text-body-sm">
+<strong>Filtro Dummies:</strong> De 32 variables One-Hot generadas, solo <strong>5</strong> (<span class="font-label-sm font-medium">poutcome_success</span>, <span class="font-label-sm font-medium">contact_telephone</span>, <span class="font-label-sm font-medium">month_may</span>, <span class="font-label-sm font-medium">mar</span>, <span class="font-label-sm font-medium">oct</span>, <span class="font-label-sm font-medium">default_unknown</span>) superaron el corte de significancia F-ratio.
+            </div>
+</div>
+</div>
+<!-- Inline SVG Radial / Pareto Distribution Gauge -->
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col items-center justify-center">
+<div class="w-full flex justify-between items-center mb-space-sm">
+<span class="font-label-md text-label-md uppercase text-on-surface-variant font-semibold">Varianza Explicada Acumulada</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">88.4% Top 15</span>
+</div>
+<svg class="w-full h-32" fill="none" viewbox="0 0 340 90" xmlns="http://www.w3.org/2000/svg">
+<!-- Grid lines -->
+<line stroke="#cbd5e1" stroke-width="1" x1="10" x2="330" y1="75" y2="75"></line>
+<line stroke="#e2e8f0" stroke-dasharray="2 2" x1="10" x2="330" y1="45" y2="45"></line>
+<line stroke="#e2e8f0" stroke-dasharray="2 2" x1="10" x2="330" y1="15" y2="15"></line>
+<!-- Bar Chart Top 15 (First 8 accented) -->
+<rect class="fill-secondary" height="59" rx="2" width="12" x="20" y="16"></rect>
+<rect class="fill-secondary" height="55" rx="2" width="12" x="40" y="20"></rect>
+<rect class="fill-secondary" height="53" rx="2" width="12" x="60" y="22"></rect>
+<rect class="fill-secondary-container" height="31" rx="2" width="12" x="80" y="44"></rect>
+<rect class="fill-secondary-container" height="26" rx="2" width="12" x="100" y="49"></rect>
+<rect class="fill-secondary-container" height="20" rx="2" width="12" x="120" y="55"></rect>
+<rect class="fill-surface-tint" height="14" rx="2" width="12" x="140" y="61"></rect>
+<rect class="fill-surface-tint" height="12" rx="2" width="12" x="160" y="63"></rect>
+<rect class="fill-surface-tint" height="10" rx="2" width="12" x="180" y="65"></rect>
+<rect class="fill-surface-tint" height="8" rx="2" width="12" x="200" y="67"></rect>
+<rect class="fill-surface-tint" height="7" rx="2" width="12" x="220" y="68"></rect>
+<rect class="fill-surface-tint" height="6" rx="2" width="12" x="240" y="69"></rect>
+<rect class="fill-surface-tint" height="5" rx="2" width="12" x="260" y="70"></rect>
+<rect class="fill-surface-tint" height="4" rx="2" width="12" x="280" y="71"></rect>
+<rect class="fill-surface-tint" height="3" rx="2" width="12" x="300" y="72"></rect>
+<!-- Pareto cumulative curve -->
+<path d="M 26 68 Q 60 40 100 28 T 180 18 T 306 14" fill="none" stroke="#009668" stroke-linecap="round" stroke-width="2.5"></path>
+<circle class="fill-tertiary-fixed stroke-tertiary-container" cx="306" cy="14" r="3.5" stroke-width="1.5"></circle>
+</svg>
+<div class="flex items-center justify-between w-full font-label-sm text-label-sm text-on-surface-variant pt-space-xs">
+<span>k=1 (euribor3m)</span>
+<span class="text-on-tertiary-container font-semibold">Corte K=15 (Acumulado 88.4%)</span>
+</div>
+</div>
+<!-- Scikit-Learn Quick Reference Snippet -->
+<div class="bg-primary text-on-primary p-space-md rounded-lg font-label-sm text-label-sm shadow-sm">
+<div class="flex items-center justify-between text-primary-fixed mb-space-xs">
+<span>Scikit-Learn Execution Code</span>
+<span class="material-symbols-outlined text-[15px]">code</span>
+</div>
+<pre class="overflow-x-auto text-primary-fixed-dim select-all"><code>from sklearn.feature_selection import SelectKBest, f_classif
+selector = SelectKBest(score_func=f_classif, k=15)
+X_reduced = selector.fit_transform(X_encoded, y)
+selected_mask = selector.get_support()</code></pre>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Final Reduced Dataset (15 Features + Target 'y') -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-semibold">ETAPA 03 • FINAL</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">2. Dataset Reducido Final (15 Mejores Features + Target 'y')</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Matriz de entrenamiento optimizada lista para modelado predictivo (LightGBM / XGBoost / LogisticRegression).</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center gap-space-xs transition-colors" onclick="downloadDatasetModal()" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">file_download</span>
+          Exportar CSV
+        </button>
+</div>
+</div>
+<!-- Features Selection Badges Strip -->
+<div class="flex flex-wrap items-center gap-space-xs p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold mr-space-xs">Variables Seleccionadas:</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm font-semibold">euribor3m</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm font-semibold">nr.employed</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm font-semibold">duration</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm font-semibold">pdays</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm font-semibold">emp.var.rate</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">poutcome_success</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">previous</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">cons.price.idx</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">contact_telephone</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">month_may</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">month_mar</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">month_oct</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">cons.conf.idx</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">age</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface font-label-sm">default_unknown</span>
+<span class="px-space-xs py-0.5 rounded bg-primary text-on-primary font-label-sm font-semibold">y [TARGET]</span>
+</div>
+<!-- Final High-Contrast Clean Data Table -->
+<div class="overflow-x-auto rounded-lg bg-surface">
+<table class="w-full text-left font-body-sm text-body-sm whitespace-nowrap">
+<thead class="bg-primary text-on-primary font-label-md text-label-md">
+<tr>
+<th class="py-2.5 px-3">idx</th>
+<th class="py-2.5 px-3 text-right">euribor3m</th>
+<th class="py-2.5 px-3 text-right">nr.employed</th>
+<th class="py-2.5 px-3 text-right">duration</th>
+<th class="py-2.5 px-3 text-right">pdays</th>
+<th class="py-2.5 px-3 text-right">emp.var.rate</th>
+<th class="py-2.5 px-3 text-center">poutcome_succ</th>
+<th class="py-2.5 px-3 text-right">previous</th>
+<th class="py-2.5 px-3 text-right">cons.price</th>
+<th class="py-2.5 px-3 text-center">contact_tel</th>
+<th class="py-2.5 px-3 text-center">mo_may</th>
+<th class="py-2.5 px-3 text-center">mo_mar</th>
+<th class="py-2.5 px-3 text-center">mo_oct</th>
+<th class="py-2.5 px-3 text-right">cons.conf</th>
+<th class="py-2.5 px-3 text-right">age</th>
+<th class="py-2.5 px-3 text-center">def_unkn</th>
+<th class="py-2.5 px-3 text-center bg-tertiary-container text-tertiary-fixed font-semibold">y (target)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-on-surface font-label-md">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant font-mono">0001</td>
+<td class="py-2 px-3 text-right">4.857</td>
+<td class="py-2 px-3 text-right">5191.0</td>
+<td class="py-2 px-3 text-right">261</td>
+<td class="py-2 px-3 text-right text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right">1.1</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">0</td>
+<td class="py-2 px-3 text-right">93.994</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">-36.4</td>
+<td class="py-2 px-3 text-right">56</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center bg-error-container text-on-error-container font-semibold">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant font-mono">0002</td>
+<td class="py-2 px-3 text-right">4.857</td>
+<td class="py-2 px-3 text-right">5191.0</td>
+<td class="py-2 px-3 text-right">149</td>
+<td class="py-2 px-3 text-right text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right">1.1</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">0</td>
+<td class="py-2 px-3 text-right">93.994</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">-36.4</td>
+<td class="py-2 px-3 text-right">57</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center bg-error-container text-on-error-container font-semibold">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant font-mono">0003</td>
+<td class="py-2 px-3 text-right">4.857</td>
+<td class="py-2 px-3 text-right">5191.0</td>
+<td class="py-2 px-3 text-right">226</td>
+<td class="py-2 px-3 text-right text-on-surface-variant">999</td>
+<td class="py-2 px-3 text-right">1.1</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">0</td>
+<td class="py-2 px-3 text-right">93.994</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">-36.4</td>
+<td class="py-2 px-3 text-right">37</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center bg-error-container text-on-error-container font-semibold">no</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant font-mono">0084</td>
+<td class="py-2 px-3 text-right font-semibold text-secondary">1.327</td>
+<td class="py-2 px-3 text-right">5099.1</td>
+<td class="py-2 px-3 text-right font-semibold text-secondary">1042</td>
+<td class="py-2 px-3 text-right font-semibold text-on-tertiary-container">6</td>
+<td class="py-2 px-3 text-right">-1.8</td>
+<td class="py-2 px-3 text-center text-on-tertiary-container font-semibold">1</td>
+<td class="py-2 px-3 text-right">1</td>
+<td class="py-2 px-3 text-right">92.893</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-right">-46.2</td>
+<td class="py-2 px-3 text-right">45</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center bg-tertiary-fixed text-on-tertiary-fixed font-semibold">yes</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-2 px-3 font-label-sm text-on-surface-variant font-mono">0129</td>
+<td class="py-2 px-3 text-right font-semibold text-secondary">0.728</td>
+<td class="py-2 px-3 text-right">5017.5</td>
+<td class="py-2 px-3 text-right font-semibold text-secondary">589</td>
+<td class="py-2 px-3 text-right font-semibold text-on-tertiary-container">3</td>
+<td class="py-2 px-3 text-right">-3.4</td>
+<td class="py-2 px-3 text-center text-on-tertiary-container font-semibold">1</td>
+<td class="py-2 px-3 text-right">2</td>
+<td class="py-2 px-3 text-right">92.431</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center text-secondary font-semibold">1</td>
+<td class="py-2 px-3 text-right">-26.9</td>
+<td class="py-2 px-3 text-right">31</td>
+<td class="py-2 px-3 text-center text-on-surface-variant">0</td>
+<td class="py-2 px-3 text-center bg-tertiary-fixed text-on-tertiary-fixed font-semibold">yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Export & Meta Footer Strip -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-xs text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">check_circle</span>
+<span>Archivo generado: <strong>bank_additional_reduced_k15.csv</strong> (~3.2 MB uncompressed)</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm">Formato: UTF-8 con delimitador coma (,)</span>
+<button class="font-label-md text-label-md text-secondary hover:underline font-semibold" onclick="downloadDatasetModal()" type="button">Descarga Directa</button>
+</div>
+</div>
+</section>
+<!-- Interactive Modal / Notification Trigger (Hidden container used by JS) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toast-notification">
+<div class="bg-primary text-on-primary px-space-md py-space-sm rounded-lg shadow-xl flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">task_alt</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-text">Dataset bank_additional_reduced_k15.csv preparado para descarga.</span>
+</div>
+</div>
+</div>
+<script>
+  function updateKValue(val) {
+    const badge = document.getElementById('k-value-badge');
+    if (badge) {
+      badge.textContent = 'k=' + val + (val === '15' ? ' óptimo' : '');
+    }
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast-notification');
+    const toastText = document.getElementById('toast-text');
+    if (toast && toastText) {
+      toastText.textContent = message;
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3200);
+    }
+  }
+
+  function downloadDatasetModal() {
+    showToast('Iniciando descarga: bank_additional_reduced_k15.csv');
+  }
+
+  function copyPipelineScript() {
+    const code = `# Pipeline ANOVA f_classif - Bank Marketing
+import pandas as pd
+from sklearn.feature_selection import SelectKBest, f_classif
+
+df = pd.read_csv('bank-additional-full.csv', sep=';')
+X = pd.get_dummies(df.drop(columns=['y']), drop_first=False)
+y = df['y'].apply(lambda x: 1 if x == 'yes' else 0)
+
+selector = SelectKBest(score_func=f_classif, k=15)
+X_reduced = selector.fit_transform(X, y)
+selected_cols = X.columns[selector.get_support()]
+
+df_final = pd.DataFrame(X_reduced, columns=selected_cols)
+df_final['y'] = df['y']
+df_final.to_csv('bank_additional_reduced_k15.csv', index=False)
+print("Pipeline completado. Reducción a 15 features exitosa.")`;
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code).then(() => {
+        const btnText = document.getElementById('copy-btn-text');
+        if (btnText) {
+          const original = btnText.textContent;
+          btnText.textContent = '¡Copiado al portapapeles!';
+          setTimeout(() => { btnText.textContent = original; }, 2000);
+        }
+        showToast('Script de pipeline copiado al portapapeles.');
+      });
+    } else {
+      showToast('Código disponible en el módulo Scikit-Learn.');
+    }
+  }
+
+  function filterRawTable() {
+    const input = document.getElementById('raw-search-input');
+    const filter = input.value.toLowerCase();
+    const table = document.getElementById('raw-table');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) {
+      const text = rows[i].textContent || rows[i].innerText;
+      if (text.toLowerCase().indexOf(filter) > -1) {
+        rows[i].style.display = '';
+      } else {
+        rows[i].style.display = 'none';
+      }
+    }
+  }
+</script></main></div></body></html>
